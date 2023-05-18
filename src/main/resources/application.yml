@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://hackserver.cidtckobgf3m.ap-northeast-2.rds.amazonaws.com/gdschack
+    username: admin
+    password: cksdl30104
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #show_sql: true
+        format_sql: ture
+
+logging.level:
+  org.hibernate.SQL: debug
