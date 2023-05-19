@@ -1,6 +1,7 @@
 package gdschack.server.controller;
 
 import gdschack.server.dto.request.PostCreateDto;
+import gdschack.server.dto.request.UpdatePostDto;
 import gdschack.server.dto.response.PostResponse;
 import gdschack.server.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,11 @@ public class PostController {
     @GetMapping("/main/{logInId}")
     public List<PostResponse> getMain(@PathVariable String logInId){
         return postService.getMain(logInId);
+    }
+
+    @PatchMapping("/update")
+    public PostResponse updatePost(@RequestBody UpdatePostDto updatePostDto){
+        return postService.updatePost(updatePostDto);
     }
 
 

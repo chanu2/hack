@@ -3,9 +3,11 @@ package gdschack.server.service;
 import gdschack.server.domain.Post;
 import gdschack.server.domain.User;
 import gdschack.server.dto.request.PostCreateDto;
+import gdschack.server.dto.request.UpdatePostDto;
 import gdschack.server.dto.response.PostResponse;
 import gdschack.server.repository.PostRepository;
 import gdschack.server.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class PostService {
 
     private final PostRepository postRepository;
@@ -44,6 +47,22 @@ public class PostService {
 
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("없는 포스트"));
         return new PostResponse(post);
+    }
+
+    public PostResponse updatePost(UpdatePostDto updatePostDto){
+
+        User user = userRepository.findByLoginId(updatePostDto.getLoginId()).orElseThrow(() -> new RuntimeException("없는 아이디"));
+
+        Post post = postRepository.findById(updatePostDto.getPostId()).orElseThrow(() -> new RuntimeException("없는 포스트"));
+
+        if(!user.equals(post.getUser())){
+            throw new RuntimeException("포스트잇 주인이 아닙니다");
+        }
+
+        post.setContent(updatePostDto.getContent());
+
+        return new PostResponse(post);
+
     }
 
     public List<PostResponse> getMain(String loginId){
