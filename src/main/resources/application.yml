@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://hackserver.cidtckobgf3m.ap-northeast-2.rds.amazonaws.com/gdschack
-    username: admin
-    password: cksdl30104
+    url: jdbc:mariadb://localhost:3306/hack
+    username: root
+    password: 1234
   jpa:
     hibernate:
       ddl-auto: create

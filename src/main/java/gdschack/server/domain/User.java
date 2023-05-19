@@ -1,10 +1,8 @@
 package gdschack.server.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -13,11 +11,27 @@ import lombok.NoArgsConstructor;
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     private String name;
 
-    private Integer age;
+    private String phoneNum;
+
+    private String loginId;
+
+    private String workPlace;
+
+    private boolean status;
+
+    @Builder
+    public User( String name, String phoneNum, String loginId, String workPlace, boolean status) {
+        this.name = name;
+        this.phoneNum = phoneNum;
+        this.loginId = loginId;
+        this.workPlace = workPlace;
+        this.status = status;
+    }
 
 
 }
