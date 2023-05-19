@@ -33,6 +33,10 @@ public class ParticipationService {
 
     }
 
+    public void deleteParticipation(){
+
+    }
+
     public List<ParticipationListDto> participationList(String teacherLoginId){
         List<Participation> participations = participationRepository.findAllByTeacherLoginId(teacherLoginId);
         return participations.stream().map(participation -> new ParticipationListDto(participation)).collect(Collectors.toList());

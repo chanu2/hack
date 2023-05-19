@@ -1,5 +1,6 @@
 package gdschack.server.global;
 
+import gdschack.server.domain.Post;
 import gdschack.server.domain.User;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
@@ -29,16 +30,26 @@ public class InitDb {
 
         public void dbInit1() {
 
-            User user1 = User.builder().name("이진우").loginId("1").phoneNum("010").workPlace(null).status(false).build();
-            User user2 = User.builder().name("김찬우").loginId("2").phoneNum("0109").workPlace(null).status(false).build();
-            User user3 = User.builder().name("이유리").loginId("3").phoneNum("011").workPlace(null).status(false).build();
-            User user4 = User.builder().name("유쥰성").loginId("4").phoneNum("012").workPlace("대광중").status(true).build();
+            User user1 = User.builder().name("이진우").loginId("asd").phoneNum("010").workPlace(null).status(false).build();
+            User user2 = User.builder().name("김찬우").loginId("qwe").phoneNum("0109").workPlace(null).status(false).build();
+            User user3 = User.builder().name("이유리").loginId("zxc").phoneNum("011").workPlace(null).status(false).build();
+            User user4 = User.builder().name("유쥰성").loginId("jkl").phoneNum("012").workPlace("대광중").status(true).build();
 
 
             em.persist(user1);
             em.persist(user2);
             em.persist(user3);
             em.persist(user4);
+
+            Post post1 = Post.builder().user(user1).content("안녕하세요").writer("a").teacherLoginId("jkl").build();
+            Post post2 = Post.builder().user(user2).content("안녕하세요1").writer("b").teacherLoginId("jkl").build();
+            Post post3 = Post.builder().user(user3).content("안녕하세요2").writer("c").teacherLoginId("jkl").build();
+            Post post4 = Post.builder().user(user4).content("안녕하세요3").writer("d").teacherLoginId("jkl").build();
+
+            em.persist(post1);
+            em.persist(post2);
+            em.persist(post3);
+            em.persist(post4);
 
 
             em.flush();

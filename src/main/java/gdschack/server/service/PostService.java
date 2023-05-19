@@ -10,6 +10,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -34,6 +38,28 @@ public class PostService {
         postRepository.save(post);
 
         return new PostResponse(post);
+    }
+
+    public PostResponse detailPost(Long id){
+
+        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("없는 포스트"));
+        return new PostResponse(post);
+    }
+
+    public List<PostResponse> getMain(String loginId){
+
+        User user = userRepository.findByLoginId(loginId).orElseThrow(() -> new RuntimeException("없는 아이디"));
+
+        if (user.getStatus() == true){
+            List<Post> posts = postRepository.findAllByTeacherLoginId(user.getLoginId());
+            return posts.stream().map(p -> new PostResponse(p)).collect(Collectors.toList());
+
+
+        }else {
+            List<Post> post = postRepository.findAllByUser(user);
+            return post.stream().map(p -> new PostResponse(p)).collect(Collectors.toList());
+        }
+
     }
 
 
