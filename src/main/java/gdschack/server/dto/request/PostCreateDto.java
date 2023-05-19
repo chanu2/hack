@@ -18,4 +18,6 @@ public class PostCreateDto {
 
     private Long teacherId;
 
+    private String writer;
+
 }
