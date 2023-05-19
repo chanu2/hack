@@ -22,7 +22,7 @@ public class ParticipationService {
 
     public void createParticipation(CreateParticipationDto createParticipationDto){
 
-        User user = userRepository.findByLoginId(createParticipationDto.getLoginId());
+        User user = userRepository.findByLoginId(createParticipationDto.getLoginId()).get();
 
         Participation participation = Participation.builder()
                 .user(user)

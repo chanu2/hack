@@ -20,7 +20,7 @@ public class PostService {
 
     public PostResponse createPost(PostCreateDto postCreateDto){
 
-        User user = userRepository.findByLoginId(postCreateDto.getLoginId());
+        User user = userRepository.findByLoginId(postCreateDto.getLoginId()).get();
 
         log.info("user={}",user.getName());
 

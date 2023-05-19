@@ -2,6 +2,7 @@ package gdschack.server.service;
 
 import gdschack.server.domain.User;
 import gdschack.server.dto.request.UserCreateDto;
+import gdschack.server.dto.response.LoginCheck;
 import gdschack.server.dto.response.UserResponse;
 import gdschack.server.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,15 @@ public class UserService {
     }
 
     public UserResponse findUserByLoginId(String loginId) {
-        User user = userRepository.findByLoginId(loginId);
+        User user = userRepository.findByLoginId(loginId)
+                .orElseThrow(()-> new RuntimeException("error"));
         return new UserResponse(user);
     }
+
+    public LoginCheck checkUser(String LoginId) {
+        LoginCheck loginCheck = new LoginCheck(userRepository.existsByLoginId(LoginId));
+        return loginCheck;
+    }
+
 
 }
