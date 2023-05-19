@@ -30,10 +30,10 @@ public class InitDb {
 
         public void dbInit1() {
 
-            User user1 = User.builder().name("이진우").loginId("asd").phoneNum("010").workPlace(null).status("0").build();
-            User user2 = User.builder().name("김찬우").loginId("qwe").phoneNum("0109").workPlace(null).status("0").build();
-            User user3 = User.builder().name("이유리").loginId("zxc").phoneNum("011").workPlace(null).status("0").build();
-            User user4 = User.builder().name("유쥰성").loginId("jkl").phoneNum("012").workPlace("대광중").status("1").build();
+            User user1 = User.builder().name("이진우").loginId("asd").phoneNum("010").workPlace(null).status("학생").build();
+            User user2 = User.builder().name("김찬우").loginId("qwe").phoneNum("0109").workPlace(null).status("학생").build();
+            User user3 = User.builder().name("이유리").loginId("zxc").phoneNum("011").workPlace(null).status("학생").build();
+            User user4 = User.builder().name("유쥰성").loginId("jkl").phoneNum("012").workPlace("대광중").status("선생님").build();
 
 
             em.persist(user1);
