@@ -21,18 +21,14 @@ public class User {
 
     private String workPlace;
 
-    private boolean status;
+    private String status;
 
     @Builder
-    public User( String name, String phoneNum, String loginId, String workPlace, boolean status) {
+    public User( String name, String phoneNum, String loginId, String workPlace, String status) {
         this.name = name;
         this.phoneNum = phoneNum;
         this.loginId = loginId;
         this.workPlace = workPlace;
         this.status = status;
-    }
-
-    public boolean getStatus() {
-        return status;
     }
 }
