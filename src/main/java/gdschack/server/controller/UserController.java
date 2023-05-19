@@ -27,7 +27,7 @@ public class UserController {
         return userService.checkUser(loginId);
     }
 
-    @GetMapping("/signin")
+    @PostMapping("/signin")
     public UserResponse login(@RequestBody SignInDto signInDto) {
         return userService.findUserByLoginId(signInDto.getLoginId());
     }
