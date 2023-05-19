@@ -75,7 +75,7 @@ public class PostService {
 
         User user = userRepository.findByLoginId(loginId).orElseThrow(() -> new RuntimeException("없는 아이디"));
 
-        if (user.getStatus() == "선생님"){
+        if (user.getStatus().equals("선생님")){
             List<Post> posts = postRepository.findAllByTeacherLoginId(user.getLoginId());
             return posts.stream().map(p -> new PostResponse(p)).collect(Collectors.toList());
 
