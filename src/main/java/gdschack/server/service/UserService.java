@@ -8,6 +8,9 @@ import gdschack.server.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -34,6 +37,11 @@ public class UserService {
     public LoginCheck checkUser(String LoginId) {
         LoginCheck loginCheck = new LoginCheck(userRepository.existsByLoginId(LoginId));
         return loginCheck;
+    }
+
+    public List<UserResponse> findAllTeacherByName(String name) {
+        List<User> userList = userRepository.findAllByNameAndStatusContaining(name, true);
+        return  userList.stream().map(u-> new UserResponse(u)).collect(Collectors.toList());
     }
 
 
