@@ -34,12 +34,13 @@ public class InitDb {
             User user2 = User.builder().name("김찬우").loginId("qwe").phoneNum("0109").workPlace(null).status("학생").build();
             User user3 = User.builder().name("이유리").loginId("zxc").phoneNum("011").workPlace(null).status("학생").build();
             User user4 = User.builder().name("유쥰성").loginId("jkl").phoneNum("012").workPlace("대광중").status("선생님").build();
-
+            User user5 = User.builder().name("유쥰성").loginId("ljsdf").phoneNum("014").workPlace("대광고").status("선생님").build();
 
             em.persist(user1);
             em.persist(user2);
             em.persist(user3);
             em.persist(user4);
+            em.persist(user5);
 
             Post post1 = Post.builder().user(user1).content("안녕하세요").writer("a").teacherLoginId("jkl").build();
             Post post2 = Post.builder().user(user2).content("안녕하세요1").writer("b").teacherLoginId("jkl").build();

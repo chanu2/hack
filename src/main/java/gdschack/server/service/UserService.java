@@ -40,7 +40,7 @@ public class UserService {
     }
 
     public List<UserResponse> findAllTeacherByName(String name) {
-        List<User> userList = userRepository.findAllByNameAndStatusContaining(name, "선생님");
+        List<User> userList = userRepository.findAllByNameContainsAndStatus(name, "선생님");
         return  userList.stream().map(u-> new UserResponse(u)).collect(Collectors.toList());
     }
 
