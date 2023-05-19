@@ -16,7 +16,7 @@ public class PostCreateDto {
 
     private String content;
 
-    private Long teacherId;
+    private String teacherLoginId;
 
     private String writer;
 

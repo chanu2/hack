@@ -7,14 +7,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/post")
+@RestController
 public class PostController {
 
-    private PostService postService;
+    private final PostService postService;
 
     @PostMapping("/create")
     public PostResponse postResponse(@RequestBody PostCreateDto postCreateDto){
 
         return postService.createPost(postCreateDto);
     }
+
+
 }

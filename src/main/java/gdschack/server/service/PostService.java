@@ -7,10 +7,12 @@ import gdschack.server.dto.response.PostResponse;
 import gdschack.server.repository.PostRepository;
 import gdschack.server.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PostService {
 
     private final PostRepository postRepository;
@@ -20,15 +22,19 @@ public class PostService {
 
         User user = userRepository.findByLoginId(postCreateDto.getLoginId());
 
+        log.info("user={}",user.getName());
+
         Post post = Post.builder()
                 .user(user)
                 .writer(postCreateDto.getWriter())
                 .content(postCreateDto.getContent())
-                .teacherId(postCreateDto.getTeacherId())
+                .teacherLoginId(postCreateDto.getTeacherLoginId())
                 .build();
 
         postRepository.save(post);
 
-        return  new PostResponse(post);
+        return new PostResponse(post);
     }
+
+
 }

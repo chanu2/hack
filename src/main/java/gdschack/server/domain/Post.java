@@ -30,14 +30,14 @@ public class Post {
 
     private String content;
 
-    private Long teacherId;
+    private String teacherLoginId;
 
 
     @Builder
-    public Post( User user, String writer, String content,Long teacherId) {
+    public Post( User user, String writer, String content,String teacherLoginId) {
         this.user = user;
         this.writer = writer;
         this.content = content;
-        this.teacherId =teacherId;
+        this.teacherLoginId =teacherLoginId;
     }
 }

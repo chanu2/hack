@@ -18,13 +18,13 @@ public class PostResponse {
 
     private String content;
 
-    private Long teacherId;
+    private String teacherLoginId;
 
     public PostResponse(Post post) {
 
         postId = post.getId();
         writer = post.getWriter();
         content = post.getContent();
-        teacherId = post.getTeacherId();
+        teacherLoginId = post.getTeacherLoginId();
     }
 }

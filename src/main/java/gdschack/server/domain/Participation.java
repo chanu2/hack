@@ -3,13 +3,15 @@ package gdschack.server.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Participation {
 
     @Id
@@ -21,10 +23,11 @@ public class Participation {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Long teacherId;
+    private String teacherLoginId;
 
-    public Participation(User user, Long teacherId) {
+    @Builder
+    public Participation(User user, String teacherLoginId) {
         this.user = user;
-        this.teacherId = teacherId;
+        this.teacherLoginId = teacherLoginId;
     }
 }
