@@ -1,13 +1,12 @@
 package gdschack.server.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter @Getter
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,5 +32,7 @@ public class User {
         this.status = status;
     }
 
-
+    public boolean getStatus() {
+        return status;
+    }
 }
