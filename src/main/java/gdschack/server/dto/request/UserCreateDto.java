@@ -19,7 +19,7 @@ public class UserCreateDto {
 
     private String workPlace;
 
-    private boolean status;
+    private String status;
 
     public User toEntity() {
         return User.builder()

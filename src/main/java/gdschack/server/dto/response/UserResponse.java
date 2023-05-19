@@ -16,7 +16,7 @@ public class UserResponse {
 
     private String workPlace;
 
-    private boolean status;
+    private String status;
 
     public UserResponse(User user) {
         this.userId = user.getId();

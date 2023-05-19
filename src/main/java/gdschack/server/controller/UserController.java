@@ -32,7 +32,7 @@ public class UserController {
         return userService.findUserByLoginId(signInDto.getLoginId());
     }
 
-    @GetMapping("/search/teacher/{name}")
+    @GetMapping("/search/{name}")
     public List<UserResponse> searchTeacher(@PathVariable String name) {
         return userService.findAllTeacherByName(name);
     }
