@@ -5,6 +5,7 @@ import gdschack.server.dto.request.UserCreateDto;
 import gdschack.server.dto.response.LoginCheck;
 import gdschack.server.dto.response.UserResponse;
 import gdschack.server.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
