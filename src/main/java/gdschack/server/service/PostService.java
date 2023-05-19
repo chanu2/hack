@@ -2,6 +2,7 @@ package gdschack.server.service;
 
 import gdschack.server.domain.Post;
 import gdschack.server.domain.User;
+import gdschack.server.dto.request.DetailPostDto;
 import gdschack.server.dto.request.PostCreateDto;
 import gdschack.server.dto.request.UpdatePostDto;
 import gdschack.server.dto.response.PostResponse;
@@ -43,9 +44,14 @@ public class PostService {
         return new PostResponse(post);
     }
 
-    public PostResponse detailPost(Long id){
+    public PostResponse detailPost(DetailPostDto detailPostDto){
 
-        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("없는 포스트"));
+        Post post = postRepository.findById(detailPostDto.getPostId()).orElseThrow(() -> new RuntimeException("없는 포스트"));
+
+        if(post.getTeacherLoginId().equals(detailPostDto.getLoginId())){
+            post.setCheckRead(true);
+        }
+
         return new PostResponse(post);
     }
 

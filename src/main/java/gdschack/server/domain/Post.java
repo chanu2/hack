@@ -32,6 +32,8 @@ public class Post {
 
     private String teacherLoginId;
 
+    private Boolean checkRead;
+
 
     @Builder
     public Post( User user, String writer, String content,String teacherLoginId) {
@@ -39,5 +41,6 @@ public class Post {
         this.writer = writer;
         this.content = content;
         this.teacherLoginId =teacherLoginId;
+        this.checkRead = false;
     }
 }

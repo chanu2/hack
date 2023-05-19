@@ -20,11 +20,14 @@ public class PostResponse {
 
     private String teacherLoginId;
 
+    private Boolean checkRead;
+
     public PostResponse(Post post) {
 
         postId = post.getId();
         writer = post.getWriter();
         content = post.getContent();
         teacherLoginId = post.getTeacherLoginId();
+        checkRead = post.getCheckRead();
     }
 }

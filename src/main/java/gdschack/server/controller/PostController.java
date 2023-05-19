@@ -1,5 +1,6 @@
 package gdschack.server.controller;
 
+import gdschack.server.dto.request.DetailPostDto;
 import gdschack.server.dto.request.PostCreateDto;
 import gdschack.server.dto.request.UpdatePostDto;
 import gdschack.server.dto.response.PostResponse;
@@ -22,9 +23,9 @@ public class PostController {
         return postService.createPost(postCreateDto);
     }
 
-    @GetMapping("/detail/{id}")
-    public PostResponse detailPost(@PathVariable Long id){
-        return postService.detailPost(id);
+    @GetMapping("/detail")
+    public PostResponse detailPost(@RequestBody DetailPostDto detailPostDto){
+        return postService.detailPost(detailPostDto);
     }
 
     @GetMapping("/main/{logInId}")
